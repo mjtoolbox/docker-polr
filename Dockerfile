@@ -1,11 +1,11 @@
 # Forked from TrafeX/docker-php-nginx (https://github.com/TrafeX/docker-php-nginx/)
 
 FROM alpine:latest
-LABEL Maintainer="Aurélien JANVIER <dev@ajanvier.fr>" \
-      Description="Unofficial Docker image for Polr."
+LABEL Maintainer="Michael Jo <michael.jo@worksafebc.com>" \
+      Description="WSBC Docker image for Polr."
 
 # Environment variables
-ENV APP_NAME My Polr
+ENV APP_NAME WorkSafeBC
 ENV APP_PROTOCOL https://
 ENV DB_PORT 3306
 ENV DB_DATABASE polr
@@ -41,7 +41,7 @@ RUN curl -sS https://getcomposer.org/installer \
 
 # Pull application
 RUN mkdir -p /src && \
-    git clone https://github.com/cydrobolt/polr.git /src
+    git clone https://github.com/mjtoolbox/polr.git /src
 
 WORKDIR /src
 
@@ -63,4 +63,7 @@ COPY seeders/AdminSeeder.php AdminSeeder_withoutEnv.php
 RUN apk del git
 
 EXPOSE 80
-ENTRYPOINT /wait-for-it.sh $DB_HOST:$DB_PORT --strict --timeout=120 -- /start.sh
+#ENTRYPOINT /wait-for-it.sh $DB_HOST:$DB_PORT --strict --timeout=10 -- /start.sh
+#ENTRYPOINT /wait-for-it.sh polrdb.mysql.database.azure.com:3306 --timeout=30 -- /start.sh
+ENTRYPOINT /start.sh
+
