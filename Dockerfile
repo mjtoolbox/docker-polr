@@ -64,6 +64,5 @@ RUN apk del git
 
 EXPOSE 80
 #ENTRYPOINT /wait-for-it.sh $DB_HOST:$DB_PORT --strict --timeout=10 -- /start.sh
-#ENTRYPOINT /wait-for-it.sh polrdb.mysql.database.azure.com:3306 --timeout=30 -- /start.sh
 ENTRYPOINT /start.sh
 
