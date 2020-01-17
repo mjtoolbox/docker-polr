@@ -9,7 +9,7 @@ ENV APP_NAME WorkSafeBC
 ENV APP_PROTOCOL https://
 ENV DB_PORT 3306
 ENV DB_DATABASE polr
-ENV DB_USERNAME polr
+ENV DB_USERNAME mjtoolbox@polrdb
 ENV POLR_BASE 62
 
 # Install packages
